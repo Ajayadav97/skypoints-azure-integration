@@ -1,0 +1,37 @@
+# Secrets and local configuration
+.env
+.env.*
+*.secrets
+secrets/
+local.settings.json
+*.publishsettings
+*.pfx
+*.p12
+*.pem
+*.key
+*.cer
+
+# Azure / deployment outputs that may contain environment-specific values
+.azure/
+.azureconfig
+*.parameters.local.json
+*credentials*
+*connectionstring*
+
+# IDE / OS
+.vscode/
+.idea/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+
+# Build outputs
+bin/
+obj/
+publish/
+node_modules/
+
+# Local Azure sandbox exports
+infra/*.zip
+postman/environments/*

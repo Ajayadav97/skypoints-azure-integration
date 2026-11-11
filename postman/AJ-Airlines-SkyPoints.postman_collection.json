@@ -1,0 +1,63 @@
+{
+  "info": {
+    "_postman_id": "8b8fca70-65e1-4bd6-9c53-7f8a7b6d1001",
+    "name": "AJ Airlines - SkyPoints API",
+    "description": "Requests for the SkyPoints Logic App HTTP trigger. Set logicAppTriggerUrl before sending. Do not commit a real signed callback URL.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "logicAppTriggerUrl",
+      "value": "https://REPLACE-WITH-LOGIC-APP-TRIGGER-URL",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Valid points event - expected 202",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"eventId\": \"AJ-EVT-10001\",\n  \"passengerId\": \"AJ-PAX-1001\",\n  \"airline\": \"AJ Airlines\",\n  \"flightNumber\": \"AJ302\",\n  \"origin\": \"DEL\",\n  \"destination\": \"LHR\",\n  \"points\": 1500,\n  \"eventType\": \"POINTS_CREDIT\",\n  \"eventDate\": \"2026-11-11T10:30:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{logicAppTriggerUrl}}"
+      },
+      "response": []
+    },
+    {
+      "name": "Invalid points event - expected validation failure",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"eventId\": \"AJ-EVT-10002\",\n  \"passengerId\": \"AJ-PAX-1002\",\n  \"airline\": \"AJ Airlines\",\n  \"flightNumber\": \"AJ415\",\n  \"origin\": \"BOM\",\n  \"destination\": \"DEL\",\n  \"points\": -500,\n  \"eventType\": \"POINTS_CREDIT\",\n  \"eventDate\": \"2026-11-11T11:00:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{logicAppTriggerUrl}}"
+      },
+      "response": []
+    }
+  ]
+}

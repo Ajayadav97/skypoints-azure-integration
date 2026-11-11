@@ -1,0 +1,15 @@
+flowchart TD
+    A[Postman / API client] --> B[API Management - planned]
+    B --> C[Logic App HTTP trigger]
+    C --> D{Validate payload and points}
+    D -->|Valid| E[Service Bus queue: aj-points-events]
+    D -->|Invalid| F[HTTP 400 response]
+    E --> G[Azure Function - planned]
+    G --> H[Business rules and idempotency - planned]
+    H --> I[Azure SQL or Table Storage - planned]
+    J[Blob Storage CSV - planned] --> K[Azure Data Factory - planned]
+    K --> I
+    L[Key Vault / Managed Identity - planned] -. secure access .-> C
+    L -. secure access .-> G
+    M[Application Insights / Log Analytics - planned] -. telemetry .-> C
+    M -. telemetry .-> G

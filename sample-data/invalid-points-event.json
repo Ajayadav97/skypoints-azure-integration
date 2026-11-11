@@ -1,0 +1,11 @@
+{
+  "eventId": "AJ-EVT-10002",
+  "passengerId": "AJ-PAX-1002",
+  "airline": "AJ Airlines",
+  "flightNumber": "AJ415",
+  "origin": "BOM",
+  "destination": "DEL",
+  "points": -500,
+  "eventType": "POINTS_CREDIT",
+  "eventDate": "2026-11-11T11:00:00Z"
+}
